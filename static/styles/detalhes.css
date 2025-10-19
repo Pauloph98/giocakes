@@ -1,0 +1,98 @@
+
+.detalhes {
+    display: flex;
+    flex-direction: column; /* Usando flexbox para uma coluna */
+    gap: 1rem; /* Espaço entre os itens */
+    padding: 2rem;
+    text-align: center;
+}
+
+.detalhes__titulo {
+    font-size: 2.75rem;
+    font-weight: 700;
+}
+
+.detalhes__categoria {
+    font-size: 1.75rem;
+    font-weight: 300;
+    margin-bottom: 1rem; /* Espaço entre a categoria e descrição */
+}
+
+.detalhes__descricao {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.75rem; /* Espaço entre a descrição e o valor */
+}
+
+.detalhes__preco {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 2rem; /* Espaço antes do formulário */
+}
+
+.detalhes__imagem {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.detalhes__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.detalhes__botao {
+    background-color: var(--rosa);
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: all 500ms;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    width: 100%;
+    box-shadow: var(--sombra);
+}
+
+.detalhes__botao--icone {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.detalhes__botao:hover {
+    color: var(--branco);
+}
+
+/* Responsividade para telas pequenas */
+@media screen and (max-width: 700px) {
+    .detalhes__titulo {
+        font-size: 2rem;
+    }
+
+    .detalhes__categoria {
+        font-size: 1.25rem;
+    }
+
+    .detalhes__descricao {
+        font-size: 1.2rem;
+    }
+
+    .detalhes__preco {
+        font-size: 1.5rem;
+    }
+
+    .detalhes__imagem {
+        width: 90%;
+        max-width: 100%;
+    }
+
+    .detalhes__form {
+        width: 100%;
+    }
+}

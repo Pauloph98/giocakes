@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="carrinho">
+        <h2 class="carrinho__titulo">Carrinho</h2>
+
+        {% if itens %}
+            {% for item in itens %}
+                {% include 'partials/_item-carrinho.html' with item=item %}
+            {% endfor %}
+            <h3 class="carrinho__valor">Valor Total: R${{ valor_total }}</h3>
+        {% else %}
+            {% include 'partials/_sem-doces.html' %}
+        {% endif %}
+
+        <div class="carrinho__links">
+            {% if itens %}
+                <a class="carrinho__link" href="{% url 'finalizar' %}">Finalizar pedido</a>
+                <!-- Formulário para limpar o carrinho -->
+                <form action="{% url 'carrinho' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="tipo" value="limpar">
+                    <button type="submit" class="carrinho__link">Limpar carrinho</button>
+                </form>
+            {% endif %}
+            <a class="carrinho__link" href="{% url 'index' %}">
+                {% if itens %}
+                    Continuar comprando
+                {% else %}
+                    Que tal ver alguns doces?
+                {% endif %}
+            </a>
+        </div>
+    </section>
+{% endblock %}

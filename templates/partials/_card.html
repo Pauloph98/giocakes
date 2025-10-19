@@ -1,0 +1,12 @@
+{% load static %}
+<article class="card-doce">
+    <h3 class="card-doce__nome">{{doce.nome}}</h3>
+    <h4 class="card-doce__categoria">{{doce.categoria}}</h4>
+    <h4 class="card-doce__preco">R${{doce.preco}}</h4>
+    {% if doce.foto %}
+    <img src="{{doce.foto.url}}" class="card-doce__imagem" aria-hidden="true">
+    {% else %}
+    <img src="{% static '/assets/not_found.svg' %}" aria-hidden="true" class="card-doce__imagem">
+    {% endif %}
+    <a class="card-doce__detalhes" href="{% url 'produtos' doce.id %}">Ver detalhes</a>
+</article>

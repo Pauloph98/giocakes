@@ -1,0 +1,132 @@
+.doces {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.doces__categorias {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+    padding: .5rem;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1240px) {
+    .doces__categorias {
+        flex-wrap: nowrap;
+        overflow: scroll;
+        max-width: calc(100vw - 1.5rem);
+    }
+}
+
+.doces__categoria {
+    cursor: pointer;
+    background-color: var(--rosa);
+    font-size: 1.125rem;
+    border-radius: .25rem;
+    padding: .25rem .5rem;
+    transition: 500ms all;
+    box-shadow: var(--sombra);
+}
+
+.doces__categoria:hover {
+    color: var(--branco);
+}
+
+.doces__categoria:active {
+    opacity: 0.8;
+    font-size: 1.25rem;
+}
+
+.doces__lista {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.doces__titulo {
+    font-size: 2.75rem;
+    font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+    .doces__titulo {
+        font-size: 2rem;
+    }
+}
+
+.card-doce {
+    width: 350px;
+    height: 450px;
+    background-color: var(--rosa);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: grid;
+    row-gap: .5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto 1fr;
+    grid-template-areas: "doce-nome doce-nome"
+        "doce-categoria doce-preco"
+        "doce-imagem doce-imagem"
+        "doce-detalhes doce-detalhes"
+    ;
+    align-items: center;
+    box-shadow: var(--sombra);
+}
+
+@media screen and (max-width: 700px) {
+    .card-doce {
+        width: 320px;
+        height: 400px;
+    }
+}
+
+.card-doce__nome {
+    font-size: 2rem;
+    font-weight: 700;
+    grid-area: doce-nome;
+    align-self: flex-start;
+}
+
+.card-doce__categoria {
+    font-size: 1rem;
+    font-weight: 700;
+    grid-area: doce-categoria;
+    text-transform: capitalize;
+}
+
+.card-doce__detalhes {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: .5rem 1rem;
+    background-color: var(--branco);
+    grid-area: doce-detalhes;
+    align-self: flex-end;
+    border-radius: .5rem;
+    text-align: center;
+    transition: all 500ms;
+}
+
+.card-doce__detalhes:hover {
+    color: var(--rosa);
+}
+
+.card-doce__preco {
+    font-weight: 700;
+    font-size: 1.25rem;
+    grid-area: doce-preco;
+}
+
+.card-doce__imagem {
+    border-radius: .5rem;
+    overflow: hidden;
+    grid-area: doce-imagem;
+    justify-self: center;
+}

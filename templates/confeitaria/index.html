@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+{% block content %}
+<section class="doces">
+    <h2 class="doces__titulo">Doces em destaque</h2>
+    <div class="doces__categorias">
+        {% for categoria in categorias %}
+            {% if categoria %}
+                <a href="?categoria={{ categoria.nome }}" class="doces__categoria">{{ categoria.nome }}</a>
+            {% else %}
+                <a href="?categoria=TODOS" class="doces__categoria">TODOS</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% include 'partials/_doces-carousel.html' with doces=doces %}
+</section>
+
+<section class="doces">
+    <h2 class="doces__titulo">Ótimas opções por menos de R$20,00</h2>
+    {% include 'partials/_doces-carousel.html' with doces=doces_baratos %}
+</section>
+{% endblock %}

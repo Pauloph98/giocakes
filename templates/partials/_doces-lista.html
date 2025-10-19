@@ -1,0 +1,9 @@
+{% if doces %}
+<section class="doces__lista">
+    {% for doce in doces %}
+        {% include 'partials/_card.html' with doce=doce %}
+    {% endfor %}
+</section>
+{% else %}
+    {% include 'partials/_sem-doces.html' %}
+{% endif %}

@@ -1,0 +1,12 @@
+{% load static %}
+<header class="cabecalho">
+    <a href="{% url 'index' %}">
+        <img class="cabecalho__logo" src="{% static 'assets/Giocakes1.PNG' %}" alt="Logo da confeitaria Giocakes" width="250" height="250" />
+    </a>
+    <form action="{% url 'busca' %}" method="post" class="cabecalho__busca">
+        {% csrf_token %}
+        <input type="text" name="busca" required class="cabecalho__input" placeholder="Busca: ">
+        <button class="cabecalho__botao" type="submit"><img src="{% static '/assets/search.svg' %}" alt="Buscar"></button>
+    </form>
+    <a href="{% url 'carrinho' %}" class="cabecalho__icone"><img src="{% static '/assets/cart.svg' %}" alt="Carrinho"></a>
+</header>

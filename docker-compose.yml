@@ -1,0 +1,235 @@
+version: '3.8'
+
+services:
+  # ======================
+  # BANCOS DE DADOS
+  # ======================
+  
+  # PostgreSQL - Catálogo (Primário)
+  catalogo-db:
+    image: postgres:15-alpine
+    container_name: catalogo-db
+    environment:
+      POSTGRES_DB: catalogo_db
+      POSTGRES_USER: catalogo_user
+      POSTGRES_PASSWORD: catalogo_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - catalogo_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U catalogo_user -d catalogo_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - confeitaria-network
+
+  # PostgreSQL - Catálogo (Réplica Read-Only)
+  catalogo-db-replica:
+    image: postgres:15-alpine
+    container_name: catalogo-db-replica
+    environment:
+      POSTGRES_DB: catalogo_db
+      POSTGRES_USER: catalogo_user
+      POSTGRES_PASSWORD: catalogo_pass
+    ports:
+      - "5433:5432"
+    volumes:
+      - catalogo_replica_data:/var/lib/postgresql/data
+    depends_on:
+      - catalogo-db
+    networks:
+      - confeitaria-network
+
+  # Redis - Carrinho (Sessões)
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - confeitaria-network
+
+  # PostgreSQL - Pedidos
+  pedidos-db:
+    image: postgres:15-alpine
+    container_name: pedidos-db
+    environment:
+      POSTGRES_DB: pedidos_db
+      POSTGRES_USER: pedidos_user
+      POSTGRES_PASSWORD: pedidos_pass
+    ports:
+      - "5434:5432"
+    volumes:
+      - pedidos_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pedidos_user -d pedidos_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - confeitaria-network
+
+  # ======================
+  # MICROSERVIÇOS
+  # ======================
+
+  # Serviço de Catálogo (Primário)
+  catalogo-service:
+    build:
+      context: ./microservices/catalogo
+      dockerfile: Dockerfile
+    container_name: catalogo-service
+    environment:
+      DATABASE_URL: postgresql://catalogo_user:catalogo_pass@catalogo-db:5432/catalogo_db
+      PORT: 5001
+      DEBUG: "False"
+    ports:
+      - "5001:5001"
+    depends_on:
+      catalogo-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 40s
+    networks:
+      - confeitaria-network
+    restart: unless-stopped
+
+  # Serviço de Catálogo (Réplica)
+  catalogo-service-replica:
+    build:
+      context: ./microservices/catalogo
+      dockerfile: Dockerfile
+    container_name: catalogo-service-replica
+    environment:
+      DATABASE_URL: postgresql://catalogo_user:catalogo_pass@catalogo-db-replica:5432/catalogo_db
+      PORT: 5001
+      DEBUG: "False"
+    ports:
+      - "5011:5001"
+    depends_on:
+      - catalogo-db-replica
+      - catalogo-service
+    networks:
+      - confeitaria-network
+    restart: unless-stopped
+
+  # Serviço de Carrinho
+  carrinho-service:
+    build:
+      context: ./microservices/carrinho
+      dockerfile: Dockerfile
+    container_name: carrinho-service
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_DB: 0
+      CATALOGO_URL: http://catalogo-service:5001
+      PORT: 5002
+      DEBUG: "False"
+    ports:
+      - "5002:5002"
+    depends_on:
+      redis:
+        condition: service_healthy
+      catalogo-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - confeitaria-network
+    restart: unless-stopped
+
+  # Serviço de Pedidos (Opcional - Bônus)
+  # pedidos-service:
+  #   build:
+  #     context: ./microservices/pedidos
+  #     dockerfile: Dockerfile
+  #   container_name: pedidos-service
+  #   environment:
+  #     DATABASE_URL: postgresql://pedidos_user:pedidos_pass@pedidos-db:5432/pedidos_db
+  #     CATALOGO_URL: http://catalogo-service:5001
+  #     CARRINHO_URL: http://carrinho-service:5002
+  #     PORT: 5003
+  #     DEBUG: "False"
+  #   ports:
+  #     - "5003:5003"
+  #   depends_on:
+  #     pedidos-db:
+  #       condition: service_healthy
+  #   networks:
+  #     - confeitaria-network
+  #   restart: unless-stopped
+
+  # ======================
+  # FERRAMENTAS (OPCIONAL)
+  # ======================
+
+  # pgAdmin - Interface para gerenciar PostgreSQL
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@confeitaria.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - catalogo-db
+      - pedidos-db
+    networks:
+      - confeitaria-network
+    profiles:
+      - tools
+
+  # Redis Commander - Interface para gerenciar Redis
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: redis-commander
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - confeitaria-network
+    profiles:
+      - tools
+
+# ======================
+# VOLUMES
+# ======================
+volumes:
+  catalogo_data:
+    driver: local
+  catalogo_replica_data:
+    driver: local
+  redis_data:
+    driver: local
+  pedidos_data:
+    driver: local
+
+# ======================
+# NETWORK
+# ======================
+networks:
+  confeitaria-network:
+    driver: bridge
+    name: confeitaria-network

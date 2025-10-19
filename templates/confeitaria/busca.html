@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% load static %} {% block content %}
+    <section class="doces">
+        <h2 class="doces__titulo">Resultados da busca por '{{busca}}'</h2>
+        {% include 'partials/_doces-lista.html' with doces=doces %}
+    </section>
+{% endblock %}

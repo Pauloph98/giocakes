@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <section class="finalizar">
+    <h2 class="finalizar__titulo">Finalizar pedido</h2>
+    <form action="{% url 'finalizar' %}" method="post" class="form">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+        <div class="form__campo">
+          <label class="form__rotulo" for="{{field.id_for_label}}">{{field.label}}</label>
+          {{field}}
+        </div>
+        {% for error in field.errors %}
+          <div class="alerta">
+            {{error}}
+          </div>
+        {% endfor %}
+      {% endfor %}
+      <h3 class="finalizar__valor-total">Valor do pedido: R${{valor_total}}</h3>
+      <button type="submit" class="form__submit">Enviar pedido</button>
+    </form>
+  </section>
+{% endblock %}
+
+{% block whatsapp_icon %}
+<!-- Nada aqui para ocultar o ícone do WhatsApp -->
+{% endblock %}

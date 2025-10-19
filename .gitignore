@@ -1,0 +1,81 @@
+# Ignorar ambientes virtuais Python
+venv/
+env/
+ENV/
+*.venv
+
+# Ignorar cache Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Ignorar arquivos de desenvolvimento
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Ignorar variáveis de ambiente
+.env
+.env.local
+.env.*.local
+
+# Ignorar bancos de dados SQLite
+*.sqlite3
+*.db
+
+# Ignorar logs
+*.log
+logs/
+
+# Ignorar arquivos temporários
+*.tmp
+*.temp
+
+# Ignorar volumes Docker
+volumes/
+postgres_data/
+redis_data/
+
+# Ignorar node_modules (se usar frontend JS)
+node_modules/
+
+# Ignorar arquivos de build
+build/
+dist/
+*.egg-info/
+
+# Ignorar arquivos de teste
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignorar arquivos de IDE
+*.sublime-project
+*.sublime-workspace
+
+# Ignorar certificados e chaves
+*.pem
+*.key
+*.crt
+
+# Ignorar uploads de mídia (exceto os já commitados)
+media/fotos/*
+!media/fotos/.gitkeep
+
+# Ignorar arquivos estáticos compilados
+static/admin/
+staticfiles/
+
+# Ignorar migrações do Django (opcional - dependendo da estratégia)
+# migrations/
+# !migrations/__init__.py

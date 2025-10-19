@@ -1,0 +1,40 @@
+{% load static %}
+{% if doces %}
+<div class="swiper" style="width: 90vw; justify-content: center;">
+    <div class="swiper-wrapper">
+        {% for doce in doces %}
+            <article class="swiper-slide">
+                {% include 'partials/_card.html' with doce=doce %}
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+<script>
+
+var vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+var maxSlides = vw / 400;
+if (maxSlides > 4) {
+    maxSlides = 4;
+}
+if (maxSlides < 1) {
+    maxSlides = 1;
+}
+new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: false,
+    slidesPerView: maxSlides,
+    draggable: true,
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+</script>
+{% else %}
+    {% include 'partials/_sem-doces.html' %}
+{% endif %}

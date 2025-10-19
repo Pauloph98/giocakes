@@ -1,0 +1,36 @@
+{% load static %}
+
+<article class="carrinho__item">
+    {% if item.doce.foto %}
+        <img class="carrinho__item__imagem" src="{{ item.doce.foto.url }}">
+    {% else %}
+        <img class="carrinho__item__imagem" src="{% static '/assets/not_found.svg' %}">
+    {% endif %}
+    <h3 class="carrinho__item__nome">{{ item.doce.nome }}</h3>
+    <p class="carrinho__item__valor-unitario">Valor unitário:</p>
+    <h4 class="carrinho__item__preco">R${{ item.doce.preco }}</h4>
+    <p>Quantidade: {{ item.quantidade }}</p>
+    <p>Total do item: R${{ item.total_item }}</p>
+
+    <div class="carrinho__item__botoes">
+        <!-- Formulário para adicionar mais quantidade -->
+        <form class="carrinho__item__form" action="{% url 'carrinho' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="doce_id" value="{{ item.doce.id }}">
+            <input type="hidden" name="tipo" value="adicionar">
+            <button type="submit" class="carrinho__botao">
+                <img class="carrinho__icone" src="{% static '/assets/add_to_cart.svg' %}" alt="Adicionar mais um ao carrinho"/>
+            </button>
+        </form>
+
+        <!-- Formulário para remover o item -->
+        <form class="carrinho__item__form" action="{% url 'carrinho' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="doce_id" value="{{ item.doce.id }}">
+            <input type="hidden" name="tipo" value="remover">
+            <button type="submit" class="carrinho__botao">
+                <img class="carrinho__icone" src="{% static '/assets/remove_from_cart.svg' %}" alt="Remover do carrinho"/>
+            </button>
+        </form>
+    </div>
+</article>

@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if doce %}
+<section class="detalhes">
+    <!-- Imagem do doce -->
+    {% if doce.foto %}
+        <img class="detalhes__imagem" src="{{ doce.foto.url }}" alt="{{ doce.nome }}">
+    {% else %}
+        <img class="detalhes__imagem" src="{% static '/assets/not_found.svg' %}" alt="Imagem não encontrada">
+    {% endif %}
+
+    <!-- Detalhes do doce -->
+    <div class="detalhes__info">
+        <h3 class="detalhes__categoria">{{ doce.categoria }}</h3>
+        <h2 class="detalhes__titulo">{{ doce.nome }}</h2>
+        <p class="detalhes__descricao">{{ doce.descricao }}</p>
+        <h3 class="detalhes__preco">R${{ doce.preco }}</h3>
+
+        <!-- Formulário para adicionar ao carrinho -->
+        <form action="{% url 'carrinho' %}" class="detalhes__form" method="post">
+            {% csrf_token %}
+            <input name="doce_id" style="display: none;" value="{{ doce.id }}"/>
+            <input type="text" style="display: none;" name="tipo" value="adicionar">
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" name="quantidade" id="quantidade" value="1" min="1" step="1" class="detalhes__quantidade">
+
+            <button id="adicionar_carrinho" class="detalhes__botao">
+                Adicionar ao carrinho
+                <img class="detalhes__botao--icone" src="{% static '/assets/add_to_cart.svg' %}" aria-hidden="true">
+            </button>
+        </form>
+    </div>
+</section>
+
+<section class="doces">
+    <h2 class="doces__titulo">Produtos relacionados</h2>
+    {% include 'partials/_doces-carousel.html' with doces=doces_relacionados %}
+</section>
+{% else %}
+    {% include 'partials/_sem-doces.html' %}
+{% endif %}
+
+<style>
+    /* Estrutura principal para telas grandes */
+    .detalhes {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: left;
+    }
+
+    /* Ajustes para imagem */
+    .detalhes__imagem {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    /* Informações do doce ao lado direito da imagem */
+    .detalhes__info {
+        flex: 1;
+    }
+
+    .detalhes__titulo {
+        font-size: 2.75rem;
+        font-weight: 700;
+    }
+
+    .detalhes__categoria {
+        font-size: 1.75rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+    }
+
+    .detalhes__descricao {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1.75rem;
+    }
+
+    .detalhes__preco {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+    }
+
+    .detalhes__form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .detalhes__botao {
+        background-color: var(--rosa);
+        padding: 0.5rem 1rem;
+        font-size: 1.5rem;
+        text-align: center;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 500ms;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        box-shadow: var(--sombra);
+    }
+
+    .detalhes__botao--icone {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .detalhes__botao:hover {
+        color: var(--branco);
+    }
+
+    /* Responsividade para telas menores */
+    @media screen and (max-width: 700px) {
+        .detalhes {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .detalhes__imagem {
+            width: 90%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .detalhes__titulo {
+            font-size: 2rem;
+        }
+
+        .detalhes__categoria {
+            font-size: 1.25rem;
+        }
+
+        .detalhes__descricao {
+            font-size: 1.2rem;
+        }
+
+        .detalhes__preco {
+            font-size: 1.5rem;
+        }
+
+        .detalhes__botao {
+            font-size: 1.2rem;
+            padding: 0.5rem;
+        }
+
+        .detalhes__botao--icone {
+            width: 2rem;
+            height: 2rem;
+        }
+    }
+</style>
+
+{% endblock %}

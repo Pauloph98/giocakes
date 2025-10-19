@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+    <title>Confeitaria</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+</head>
+<body>
+    {% include 'partials/_header.html' %}
+    <main class="container">
+        {% include 'partials/_alertas.html' %}
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Bloco para o ícone do WhatsApp -->
+    {% block whatsapp_icon %}
+    <div class="whatsapp-contact">
+        <a href="https://wa.me/5562996877578?text=Olá!%20Tenho%20uma%20dúvida%20ou%20desejo%20fazer%20uma%20encomenda." target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone do WhatsApp">
+            <span>Para encomendas ou se tiver alguma dúvida, clique aqui e será redirecionado para o nosso WhatsApp</span>
+        </a>
+    </div>
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <style>
+        .whatsapp-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: #25D366;
+            padding: 15px 20px;
+            border-radius: 30px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            z-index: 1000;
+            max-width: 100%;
+            width: 300px;
+        }
+        .whatsapp-contact a {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            width: 100%;
+        }
+        .whatsapp-contact img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+        .whatsapp-contact span {
+            font-size: 1rem;
+            text-align: left;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 600px) {
+            .whatsapp-contact {
+                width: 100%;
+                max-width: 260px;
+                padding: 10px;
+            }
+            .whatsapp-contact span {
+                font-size: 0.9rem;
+            }
+            .whatsapp-contact img {
+                width: 28px;
+                height: 28px;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* Reset de CSS - Aplique para garantir que o layout tenha a mesma base em diferentes navegadores */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remover lista de estilo (bolinhas/números) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* Ajuste as imagens para que não ultrapassem seus containers */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+/* Remover espaçamento entre células em tabelas */
+table {
+    border-collapse: collapse;
+}
+
+/* Ajustes de comportamento para inputs e textareas */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* Ajustes de pre-formatado */
+pre {
+    all: revert;
+}
+
+/* Reajuste do placeholder */
+::placeholder {
+    color: unset;
+}

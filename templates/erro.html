@@ -1,0 +1,7 @@
+{% extends 'base.html' %}{% load static %} {% block content %}
+    <section class="doces">
+        <h2 class="doces__titulo">{{mensagem}}</h2>
+        {% include 'partials/_sem-doces.html' %}
+        <a href="{% url 'index' %}" class="detalhes__botao">Voltar para a página inicial</a>
+    </section>
+{% endblock %}

@@ -1,0 +1,63 @@
+.finalizar {
+    align-self: center;
+}
+
+.finalizar, .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.finalizar__titulo {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.form__campo {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.form__rotulo {
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.form__campo input, .form__campo textarea {
+    border: 2px solid var(--cinza);
+    color: var(--preto);
+    font-size: 1.25rem;
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    min-width: 25vw;
+    max-width: 80vw;
+    height: fit-content;
+}
+
+.form__mensagem {
+    max-height: 15vh; 
+}
+
+.form__mensagem::placeholder {
+    color: var(--cinza);
+}
+
+.form__campo input::placeholder {
+    color: var(--cinza);
+}
+
+.form__submit {
+    padding: .5rem 1rem;
+    background-color: var(--rosa);
+    font-size: 1.75rem;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: .5rem;
+    align-self: center;
+}
+
+.finalizar__valor-total {
+    font-weight: 500;
+    font-size: 1.5rem;
+}

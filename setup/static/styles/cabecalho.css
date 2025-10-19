@@ -1,0 +1,51 @@
+.cabecalho {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+    background-color: var(--rosa);
+}
+
+.cabecalho__titulo {
+    text-align: left;
+    font-size: 3.25rem;
+    font-weight: 700;
+}
+
+.cabecalho__busca {
+    background-color: var(--branco);
+    border-radius: 1rem;
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.cabecalho__input {
+    font-size: 1.25rem;
+}
+
+.cabecalho__botao {
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+}
+
+.cabecalho__input::placeholder {
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+.cabecalho__icone {
+    background-color: var(--branco);
+    border-radius: 50%;
+    padding: .5rem;
+    width: 3rem;
+    height: 3rem;
+    transition: all 500ms;
+}
+
+.cabecalho__icone:hover {
+    background-color: var(--rosa);
+}
