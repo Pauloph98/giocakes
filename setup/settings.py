@@ -81,10 +81,19 @@ WSGI_APPLICATION = "setup.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# Migrado de SQLite para PostgreSQL para:
+# - Suportar concorrência e replicação (requisitos do TCC)
+# - Melhor performance em ambiente distribuído
+# - Mesma tecnologia dos microserviços
+
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "confeitaria_django",
+        "USER": "catalogo_user",
+        "PASSWORD": "catalogo_pass",
+        "HOST": "localhost",  # PostgreSQL do Docker na porta 5432
+        "PORT": "5432",
     }
 }
 

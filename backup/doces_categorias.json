@@ -1,0 +1,308 @@
+[
+{
+  "model": "confeitaria.categoria",
+  "pk": 1,
+  "fields": {
+    "nome": "Salgados"
+  }
+},
+{
+  "model": "confeitaria.categoria",
+  "pk": 2,
+  "fields": {
+    "nome": "Bolo Gelado"
+  }
+},
+{
+  "model": "confeitaria.categoria",
+  "pk": 3,
+  "fields": {
+    "nome": "Pote da Felicidade"
+  }
+},
+{
+  "model": "confeitaria.categoria",
+  "pk": 4,
+  "fields": {
+    "nome": "Caseirinhos"
+  }
+},
+{
+  "model": "confeitaria.categoria",
+  "pk": 5,
+  "fields": {
+    "nome": "Fatia supreme"
+  }
+},
+{
+  "model": "confeitaria.categoria",
+  "pk": 6,
+  "fields": {
+    "nome": "Quitandas"
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 1,
+  "fields": {
+    "nome": "Paçoca",
+    "descricao": "Caseirinho Paçoca",
+    "categoria": 4,
+    "preco": 18.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_20.37.50_36c63b98.jpg",
+    "estoque": 7
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 2,
+  "fields": {
+    "nome": "Fubá com goiabada",
+    "descricao": "Caseirinho de Fubá com goiabada",
+    "categoria": 4,
+    "preco": 18.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_20.37.51_4860fd09.jpg",
+    "estoque": 7
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 3,
+  "fields": {
+    "nome": "Chocolate",
+    "descricao": "Caseirinho de Chocolate",
+    "categoria": 4,
+    "preco": 18.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_20.37.52_2eb3010d.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 4,
+  "fields": {
+    "nome": "Limão",
+    "descricao": "Caseirinho de Limão",
+    "categoria": 4,
+    "preco": 18.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_20.37.52_12ebde9c.jpg",
+    "estoque": 8
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 5,
+  "fields": {
+    "nome": "Cenoura",
+    "descricao": "Caseirinho de Cenoura",
+    "categoria": 4,
+    "preco": 18.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_20.37.52_bbdbd69f.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 6,
+  "fields": {
+    "nome": "Morango",
+    "descricao": "Pote da Felicidad duplo ninho com morango e chocolate cremoso.",
+    "categoria": 3,
+    "preco": 15.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_21.03.24_c0b29013.jpg",
+    "estoque": 9
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 7,
+  "fields": {
+    "nome": "Brownie",
+    "descricao": "Copo 200ml com recheio de Mousse de ninho com Browniee morango, creme de ninho e chocolate cremoso.",
+    "categoria": 3,
+    "preco": 15.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_21.09.01_76b64eca.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 8,
+  "fields": {
+    "nome": "Kitkat",
+    "descricao": "Duplo ninho com com Kitkat e creme de chocolate.",
+    "categoria": 3,
+    "preco": 15.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-04_às_21.10.22_81de6f3b.jpg",
+    "estoque": 0
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 9,
+  "fields": {
+    "nome": "Danoninho",
+    "descricao": "Copo 200ml com recheio de Mousse de morango,  com creme de ninho e geleia de morango.",
+    "categoria": 3,
+    "preco": 15.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.04.24_6b5b3447.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 10,
+  "fields": {
+    "nome": "Ouro branco",
+    "descricao": "Duplo ninho com ouro branco e chocolate cremoso.",
+    "categoria": 3,
+    "preco": 15.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.05.07_e509edec.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 11,
+  "fields": {
+    "nome": "Choconinho",
+    "descricao": "Massa de chocolate molhadinha com recheio de ninho e creme de chocolate",
+    "categoria": 2,
+    "preco": 9.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.20.37_b990a029.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 12,
+  "fields": {
+    "nome": "Doce de leite com Abacaxi",
+    "descricao": "Massa molhadinha de Baunilha, com recheio de ninho com Abacaxi e doce de leite.",
+    "categoria": 2,
+    "preco": 9.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.20.38_d2322992.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 13,
+  "fields": {
+    "nome": "Ameixa",
+    "descricao": "Massa molhadinha de Baunilha com recheio de doce de leite e Ameixa.",
+    "categoria": 2,
+    "preco": 9.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.20.38_66c5f9e9.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 14,
+  "fields": {
+    "nome": "Prestígio",
+    "descricao": "Massa de chocolate com recheio cremoso de coco e chocolate.",
+    "categoria": 2,
+    "preco": 9.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.22.22_34468d89.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 15,
+  "fields": {
+    "nome": "Choconinho",
+    "descricao": "Massa de chocolate, recheio de creme de ninho e cremosa de chocolate, com cobertura de brigadeiro.",
+    "categoria": 5,
+    "preco": 17.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.31.09_664e73ab.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 16,
+  "fields": {
+    "nome": "Bombom de morango",
+    "descricao": "Massa de chocolate, recheio cremosa de ninho e morango",
+    "categoria": 5,
+    "preco": 17.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.34.48_fe2a28ed.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 17,
+  "fields": {
+    "nome": "Rosca de leite condensado",
+    "descricao": "Massa fofinha e molhadinha com cobertura de leite condensado e coco.\r\nBandeja com 5 unidades.",
+    "categoria": 6,
+    "preco": 10.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.52.30_815e045c.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 18,
+  "fields": {
+    "nome": "Sonho",
+    "descricao": "Sonho gourmet de leite ninho.",
+    "categoria": 6,
+    "preco": 7.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.56.00_eb4fd545.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 19,
+  "fields": {
+    "nome": "Sanduíche natural",
+    "descricao": "Pãozinho fofinha com patê de frango,  mussarela, alface e tomate. \r\n\r\nBandeja com 6 unidades.",
+    "categoria": 6,
+    "preco": 12.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_12.59.51_45962014.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 20,
+  "fields": {
+    "nome": "Salgados",
+    "descricao": "Porção 10 unidades sortidos",
+    "categoria": 1,
+    "preco": 9.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_15.01.48_6369696a.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 21,
+  "fields": {
+    "nome": "Salgados tamanho festa",
+    "descricao": "Salgados tamanho festa, variados. \r\n50 unidades",
+    "categoria": 1,
+    "preco": 45.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_15.05.45_1824eb12.jpg",
+    "estoque": 10
+  }
+},
+{
+  "model": "confeitaria.doce",
+  "pk": 22,
+  "fields": {
+    "nome": "Salgados tamanho festa",
+    "descricao": "Salgados tamanho festa, variados.\r\n100 unidades",
+    "categoria": 1,
+    "preco": 90.0,
+    "foto": "fotos/2024/11/06/Imagem_do_WhatsApp_de_2024-11-05_às_15_RtZfEjl.05.45_1824eb12.jpg",
+    "estoque": 10
+  }
+}
+]
