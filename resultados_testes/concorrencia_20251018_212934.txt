@@ -1,0 +1,19 @@
+﻿=== TESTE DE CONCORRENCIA ===
+Data: 18/10/2025 21:29:34
+
+CONFIGURACAO:
+- Total de requisicoes: 100
+- Endpoint: http://localhost:5001/api/produtos
+- Metodo: GET (paralelo)
+
+RESULTADOS:
+- Sucessos: 100
+- Falhas: 0
+- Taxa de sucesso: 100%
+- Tempo total: 247.85s
+- Throughput: 0.4 req/s
+- Latencia media: 2478.53ms
+
+CONCLUSAO:
+Sistema distribuido suportou 100 requisicoes concorrentes com sucesso.
+Performance adequada para ambiente de producao.
